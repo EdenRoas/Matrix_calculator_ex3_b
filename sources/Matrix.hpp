@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-using namespace std;
+using namespace std;//?
 namespace zich
 {
 
@@ -44,12 +44,12 @@ namespace zich
         bool operator==(const Matrix &mat_b)const;// check if mat == mat_b -> true ? false
         bool operator!=(Matrix &mat_b); // check if mat != mat_b ->true ? false
         // pre & suf
-        Matrix &operator++();   // increased by 1 -> cur mat
-        Matrix operator++(int); // increased by 1 ->new mat
-        Matrix &operator--(); // increased by -1 -> cur mat
-        Matrix operator--(int); //increased by -1 -> new mat
+        Matrix &operator++();   // return the curr++ -> prefix
+        Matrix operator++(int); // return the original mat and postfix the new mat
+        Matrix &operator--(); // return the curr mat -- -> suffix
+        Matrix operator--(int); // return new mat postfix --1
         
-        friend ostream& operator<< (ostream& output, const Matrix& mat);
-        friend istream& operator>> (istream& is, Matrix& mat);
+        friend ostream& operator<< (ostream& output, const Matrix& mat); //stream -> update the object
+        friend istream& operator>> (istream& is, Matrix& mat); //cin
     };
 }

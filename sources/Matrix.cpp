@@ -45,7 +45,6 @@ zich::Matrix::Matrix(vector<double> mat, int rows, int columns)
     int mat_size = row * cols;
     my_mat.resize((unsigned long)mat_size);
     string::size_type i = 0;
-    string Vec_check;
     for (i = 0; i < mat_size; ++i)
     { 
         my_mat.at(i) = mat.at(i);
@@ -54,7 +53,6 @@ zich::Matrix::Matrix(vector<double> mat, int rows, int columns)
 // Add
 zich::Matrix zich::Matrix::operator+(const zich::Matrix &mat_b)
 { // mat += mat_b -> return new mat
-
     check_shapes(row, cols, mat_b.row, mat_b.cols);
     int mat_size = row * cols;
     string::size_type i = 0;
@@ -86,7 +84,7 @@ zich::Matrix zich::Matrix::operator+() // unari -> return the cureent mat withou
 
 // Sub
 zich::Matrix zich::Matrix::operator-(const zich::Matrix &mat_b)
-{ // mat -= mat_b -> return new mat
+{ // mat - mat_b -> return new mat
 
     check_shapes(row, cols, mat_b.row, mat_b.cols);
 
@@ -195,7 +193,7 @@ zich::Matrix zich::Matrix::operator*(const Matrix &mat) // mat*mat -> return new
     Matrix ans_mat(sol_mat, this->row, mat.cols);
     return ans_mat;
 }
-zich::Matrix zich::Matrix::operator*=(const Matrix &mat) // mat * mat ->  return curr mat
+zich::Matrix zich::Matrix::operator*=(const Matrix &mat) // mat *= mat ->  return curr mat
 {
     check_shapes_for_mult(row, cols, mat.row, mat.cols);
 
@@ -284,7 +282,7 @@ bool zich::Matrix::operator!=(zich::Matrix &mat_b)
 }
 
 zich::Matrix &zich::Matrix::operator++()
-{ // return the curr (increment by 1)mat
+{ // return the curr++ -> prefix
     int mat_size = row * cols;
     string::size_type i = 0;
     for (i = 0; i < mat_size; i++)
@@ -295,7 +293,7 @@ zich::Matrix &zich::Matrix::operator++()
 }
 
 zich::Matrix zich::Matrix::operator++(int)
-{ // return new mat ->increment by 1 the mat
+{ // return the original mat and postfix the new mat
     int mat_size = row * cols;
     string::size_type i = 0;
     Matrix ans_mat = *this;
@@ -307,7 +305,7 @@ zich::Matrix zich::Matrix::operator++(int)
 }
 
 zich::Matrix &zich::Matrix::operator--()
-{ // return curr mat ->increment by -1 the mat
+{ // return the curr mat -- -> suffix
     int mat_size = row * cols;
     string::size_type i = 0;
     for (i = 0; i < mat_size; i++)
@@ -318,7 +316,7 @@ zich::Matrix &zich::Matrix::operator--()
 }
 
 zich::Matrix zich::Matrix::operator--(int)
-{ // return new mat ->increment by -1 the mat
+{ // return new mat postfix --1
 
     int mat_size = row * cols;
     string::size_type i = 0;
